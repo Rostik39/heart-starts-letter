@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#dcecff">
   <title>Для тебя</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,48 +11,44 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="floaters" aria-hidden="true"></div>
+  <div id="sky"><canvas id="stars"></canvas></div>
 
-  <!-- 1. Конверт -->
   <section id="intro" class="screen active">
     <button id="envelope" class="envelope" aria-label="Открыть письмо">
       <span class="env-back"></span>
-      <span class="env-letter"><span class="heart-icon">&#10084;</span></span>
+      <span class="env-letter"></span>
       <span class="env-front"></span>
       <span class="env-flap"></span>
-      <span class="env-seal">&#10084;</span>
+      <span class="env-seal">&#10084;&#xFE0E;</span>
     </button>
     <p class="hint">нажми на конверт</p>
   </section>
 
-  <!-- 2. Сердце и слова -->
-  <section id="main" class="screen">
-    <canvas id="heart"></canvas>
-    <div class="main-text">
-      <h1 id="title"></h1>
-      <p id="typed" class="typed"></p>
-    </div>
-    <button id="toReasons" class="btn hidden">дальше &rarr;</button>
+  <section id="letter" class="screen">
+    <div class="paper"><p id="letterText"></p></div>
+    <p id="letterHint" class="hint">нажми, чтобы продолжить</p>
   </section>
 
-  <!-- 3. Причины -->
-  <section id="reasons" class="screen">
-    <h2>За что я тебя люблю</h2>
-    <p class="sub">переверни каждую карточку</p>
-    <div id="cards" class="cards"></div>
-    <button id="toFinal" class="btn hidden">и самое главное &rarr;</button>
+  <section id="night" class="screen">
+    <p id="question" class="question"></p>
   </section>
 
-  <!-- 4. Финал -->
-  <section id="final" class="screen">
-    <h2 id="finalTitle"></h2>
-    <p id="finalText" class="final-text"></p>
-    <div class="final-buttons">
-      <button id="yes" class="btn big">Да!</button>
-      <button id="no" class="btn ghost">Нет</button>
+  <div id="wish" class="wish" aria-hidden="true">
+    <div class="wish-inner">
+      <div class="wish-glow"></div>
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <radialGradient id="starFill" cx="50%" cy="55%" r="55%">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.55" stop-color="#e8f3ff"/>
+            <stop offset="1" stop-color="#a6d0ff"/>
+          </radialGradient>
+        </defs>
+        <polygon id="starShape" fill="url(#starFill)" stroke="#a6d0ff" stroke-width="3.5" stroke-linejoin="round"/>
+      </svg>
+      <span id="wishText" class="wish-text"></span>
     </div>
-    <p id="afterYes" class="after-yes hidden"></p>
-  </section>
+  </div>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
